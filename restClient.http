@@ -1,0 +1,129 @@
+@hostname = localhost
+@entryPoint = http://{{hostname}}:4200/api/v1
+
+@accessToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJ1c2VybmFtZSI6Ill1bWkiLCJlbWFpbCI6ImNvbnRhY3RAeXVtaWNvZGUubmV0Iiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzA1OTA3NSwiZXhwIjoxNjkzMTQ1NDc1fQ.7t2zF7mRqEf022e7nz8xmx3up475ejbwh14j9v_O8Mw
+
+
+@refreshToken = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0LCJ1c2VybmFtZSI6Ill1bWkiLCJlbWFpbCI6ImNvbnRhY3RAeXVtaWNvZGUubmV0Iiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MjUyMTk1NSwiZXhwIjoxNjkyNjk0NzU1fQ.kSfpYpubqaKUzUL1OMsHw2gn2dVqSMiXjI_pDkIEw-c
+
+
+#& -----------------------------------------------
+#~ ------------------------------------------ USER
+#& -----------------------------------------------
+
+#~ ------------------------ doSignUp
+###
+POST {{entryPoint}}/signup
+Content-Type: application/json
+
+{
+    "username": "Yumii",
+    "email": "test@yumicode.net",
+    "password": "N6y$Ozddzt=1aa",
+    "passwordConfirm": "N6y$Ozddzt=1aa"
+}
+
+#~ ------------------------ doSignIn
+###
+POST {{entryPoint}}/signin
+Content-Type: application/json
+
+{
+  "email": "contact@yumicode.net",
+  "password": "N6y$Ozddzt=1aa"
+}
+
+#~ ------------------------ doSignOut
+###
+GET {{entryPoint}}/signout
+Content-Type: application/json
+{{refreshToken}}
+
+
+#^ ------------------------ fetchAllUsers
+###
+GET {{entryPoint}}/users
+Content-Type: application/json
+{{accessToken}}
+
+#^ ------------------------ fetchAllUsersMongo
+###
+GET {{entryPoint}}/usersmongo
+Content-Type: application/json
+{{accessToken}}
+
+#^ ------------------------ fetchOneUser
+###
+GET {{entryPoint}}/users/3
+Content-Type: application/json
+{{accessToken}}
+
+
+#^ ------------------------ updateUser
+###
+PATCH {{entryPoint}}/users/4
+Content-Type: application/json
+{{accessToken}}
+
+{
+    "first_name": "Yumedo"
+}
+
+
+#^ ------------------------ deleteUser
+###
+DELETE {{entryPoint}}/users/2
+Content-Type: application/json
+{{accessToken}}
+
+#^ ------------------------ refreshToken
+###
+POST {{entryPoint}}/refreshToken
+Content-Type: application/json
+{{refreshToken}}
+
+#& -----------------------------------------------
+#~ --------------------------------------- ARTICLE
+#& -----------------------------------------------
+
+#^ ------------------------ createArticle
+###
+POST {{entryPoint}}/articles
+Content-Type: application/json
+{{accessToken}}
+
+{
+    "title": "Super article !",
+    "abstract": "Description de mon article",
+    "content": "Ceci est mon article"
+}
+
+#^ ------------------------ fetchAllArticles
+###
+GET {{entryPoint}}/users/12/articles
+Content-Type: application/json
+{{accessToken}}
+
+#^ ------------------------ fetchOneArticle
+###
+GET {{entryPoint}}/users/12/articles/14
+Content-Type: application/json
+{{accessToken}}
+
+#^ ------------------------ updateArticle
+###
+PATCH {{entryPoint}}/articles/12
+Content-Type: application/json
+{{accessToken}}
+
+{
+    "title": "Super article modifiééééééé !",
+    "abstract": "Description de mon article modifié",
+    "content": "Ceci est mon article modifié"
+}
+
+#^ ------------------------ deleteArticle
+###
+DELETE {{entryPoint}}/articles/13
+Content-Type: application/json
+{{accessToken}}

@@ -1,0 +1,4 @@
+2023-11-27 Time_15:51:05 : Initialisation complete!
+2023-11-27 Time_15:52:06 : Creation of new version: v1
+2023-11-27 Time_16:01:22 : Creation of new version: v2
+2023-11-27 Time_16:16:10 : Creation of new version: v3
