@@ -1,0 +1,38 @@
+version: '1'
+
+services:
+  beta7m:
+    container_name: "beta7m-api"
+    image: beta7m-api
+    volumes:
+      - .:/home/server/beta7m-api
+    ports:
+      - '4009:${PORT}'
+    depends_on:
+      - beta7m-db
+    restart: always
+    networks:
+      - beta7m-network
+
+  beta7m-db:
+    container_name: "beta7m-db"
+    image: postgres
+    restart: always
+    ports:
+      - '5440:${PGPORT}'
+    environment:
+      - POSTGRES_USER=${PGUSER}
+      - POSTGRES_PASSWORD=${PGPASSWORD}
+      - POSTGRES_DB=${PGDATABASE}
+    networks:
+      - beta7m-network
+    volumes:
+      - db-data-beta7m:/var/lib/postgresql/data
+
+volumes:
+  db-data-beta7m:
+
+networks:
+  beta7m-network:
+    name: beta7m-network
+    driver: bridge
