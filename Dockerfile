@@ -6,6 +6,6 @@ COPY . /server/
 
 RUN npm install
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "prod"]
 
 EXPOSE 4009
