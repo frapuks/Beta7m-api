@@ -19,7 +19,7 @@ services:
     image: postgres
     restart: always
     ports:
-      - '5442:${PGPORT}'
+      - '5443:${PGPORT}'
     environment:
       - POSTGRES_USER=${PGUSER}
       - POSTGRES_PASSWORD=${PGPASSWORD}
