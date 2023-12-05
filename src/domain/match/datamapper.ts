@@ -1,6 +1,8 @@
 //~ Import modules
+import pg from "pg";
 import client from "../../config/databases/connect_pg.js";
 import { PGCoreDataMapper } from "../core/coreDatamapper.js";
+import { Match } from "./Types.js";
 
 class PGMatchDataMapper extends PGCoreDataMapper {
   tableName = "match";

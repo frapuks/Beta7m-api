@@ -1,23 +1,23 @@
 //~ Import modules
-import { Request, Response } from 'express';
-import debug from 'debug';
-import { ICoreController, IModel } from './Types';
-const logger = debug('Controller');
+import { Request, Response } from "express";
+import debug from "debug";
+import { ICoreController, IModel } from "./Types";
+const logger = debug("Controller");
 
 class CoreController implements ICoreController {
   model: IModel;
   paramsId: string;
   createSuccessful: string = `Successfully created!`;
-  updateSuccessful: string = 'Informations successfully updated!';
-  deleteSuccessful: string = 'Informations successfully deleted!';
+  updateSuccessful: string = "Informations successfully updated!";
+  deleteSuccessful: string = "Informations successfully deleted!";
 
   //& Create
   create = async (req: Request, res: Response) => {
     try {
       const bodyData = req.body;
-      await this.model.createOneItem(bodyData);
+      const response = await this.model.createOneItem(bodyData);
 
-      return res.status(201).json(this.createSuccessful);
+      return res.status(201).json(response);
     } catch (err) {
       if (err instanceof Error) logger(err.message);
     }

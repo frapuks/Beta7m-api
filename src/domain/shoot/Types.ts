@@ -4,6 +4,8 @@ export type Shoot = {
   shooter_id: number;
   goalkeeper_id: number;
   match_id: number;
+  goalkeeper?: object;
+  shooter?: object;
 };
 
 export interface ShootSchema {

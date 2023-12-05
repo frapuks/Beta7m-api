@@ -1,13 +1,13 @@
 //~ Import modules
-import { ICoreModel, IData } from './Types';
+import { ICoreModel, IData } from "./Types";
 
 class CoreModel implements ICoreModel {
   data: IData;
 
-  notFoundMsg: string = 'Item not found!';
-  notValidMsg: string = 'Given informations not valid.';
-  forbiddenMsg: string = 'Given informations not allows any modification.';
-  badRequestMsg: string = 'You cannot access this info, go away!';
+  notFoundMsg: string = "Item not found!";
+  notValidMsg: string = "Given informations not valid.";
+  forbiddenMsg: string = "Given informations not allows any modification.";
+  badRequestMsg: string = "You cannot access this info, go away!";
 
   createOneItem = async (bodyData: Object) => {
     const result = await this.data.insert(bodyData);

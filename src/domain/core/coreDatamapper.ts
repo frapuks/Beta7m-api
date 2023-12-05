@@ -1,5 +1,5 @@
 //~ Import modules
-import pg from 'pg';
+import pg from "pg";
 
 class PGCoreDataMapper {
   client: object;
@@ -22,7 +22,7 @@ class PGCoreDataMapper {
       };
 
       const result = await this.client.query(preparedQuery);
-      return result.rows;
+      return result.rows[0];
     }
   };
 
