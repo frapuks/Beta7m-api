@@ -4,6 +4,7 @@ import { NextFunction, Request, Response } from "express";
 export const corsOptions = (req: Request, res: Response, next: NextFunction) => {
   // Access control need to be the authorized adress
   res.setHeader('Access-Control-Allow-Origin', ['https://beta7m.fg-tech.fr']);
+  // res.setHeader('Access-Control-Allow-Origin', ['*']);
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
